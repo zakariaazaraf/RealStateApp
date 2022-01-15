@@ -57,6 +57,17 @@ app.get('/products/:productId/offers', async (req, res) =>{
     }
 })
 
+// Search for a product
+app.get('/search/:searchQuery', async (req, res) =>{
+    const { searchQuery } = req.params
+    try {
+        const response = await request(`${baseUrl}&url=http://amazon.com/s?k=${searchQuery}`)
+        res.send(JSON.parse(response))
+    } catch (error) {
+        console.log(error)
+    }
+})
+
 app.listen(PORT, ()=>{
     console.log(`The application started running on Port ${PORT}`)
 })
