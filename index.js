@@ -35,6 +35,28 @@ app.get('/products/:productId', async (req, res) =>{
     }
 })
 
+// Get product Reviews
+app.get('/products/:productId/reviews', async (req, res) =>{
+    const { productId } = req.params
+    try {
+        const response = await request(`${baseUrl}&url=http://amazon.com/product-reviews/${productId}`)
+        res.send(JSON.parse(response))
+    } catch (error) {
+        console.log(error)
+    }
+})
+
+// Get product Reviews
+app.get('/products/:productId/reviews', async (req, res) =>{
+    const { productId } = req.params
+    try {
+        const response = await request(`${baseUrl}&url=http://amazon.com/dp/product-reviews/${productId}`)
+        res.send(JSON.parse(response))
+    } catch (error) {
+        console.log(error)
+    }
+})
+
 app.listen(PORT, ()=>{
     console.log(`The application started running on Port ${PORT}`)
 })
