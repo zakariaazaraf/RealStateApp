@@ -46,11 +46,11 @@ app.get('/products/:productId/reviews', async (req, res) =>{
     }
 })
 
-// Get product Reviews
-app.get('/products/:productId/reviews', async (req, res) =>{
+// Get product offers
+app.get('/products/:productId/offers', async (req, res) =>{
     const { productId } = req.params
     try {
-        const response = await request(`${baseUrl}&url=http://amazon.com/dp/product-reviews/${productId}`)
+        const response = await request(`${baseUrl}&url=http://amazon.com/dp/offre-listing/${productId}`)
         res.send(JSON.parse(response))
     } catch (error) {
         console.log(error)
